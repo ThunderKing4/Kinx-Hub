@@ -109,7 +109,7 @@ function lib:NewLib(UIName)
 	game:GetService("UserInputService").InputBegan:Connect(function(input)
 		if input.KeyCode == togglekeybind then
 			if MainFrame.Position.X.Scale > 1 or MainFrame.Position.Y.Scale > 1 then
-				MainFrame:TweenPosition(UDim2.new(0.5,0,0.5,0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 1, true)
+				MainFrame:TweenPosition(UDim2.new(0.5,0,0.5,0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.5, true)
 			else
 				MainFrame:TweenPosition(MainFrame.Position + UDim2.new(2, 0,0,0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 1, true)
 			end
@@ -301,7 +301,7 @@ function lib:NewCheckBox(section, value, status, func)
     });
     local toggle = addInstance("TextButton", {
         AnchorPoint = Vector2.new(0.5, 0.5),
-        BackgroundColor3 = Color3.fromRGB(149, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(30,30,30),
         BorderSizePixel = 0,
         Position = UDim2.new(0.930000007, 0, 0.5, 0),
         Size = UDim2.new(0, 20, 0, 20),
@@ -318,14 +318,14 @@ function lib:NewCheckBox(section, value, status, func)
 
     local state = status
 	if state then
-		toggle.BackgroundColor3 = Color3.fromRGB(0, 149, 74)
+		toggle.BackgroundColor3 = Color3.fromRGB(6, 255, 255)
 	end
 	toggle.MouseButton1Click:Connect(function()
 		state = not state;
 		if state then
-			game:GetService("TweenService"):Create(toggle, TweenInfo.new(0.4), {BackgroundColor3 = Color3.fromRGB(0, 149, 74)}):Play()
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(0.4), {BackgroundColor3 = Color3.fromRGB(6, 255, 255)}):Play()
 		else
-			game:GetService("TweenService"):Create(toggle, TweenInfo.new(0.4), {BackgroundColor3 = Color3.fromRGB(149, 0, 0)}):Play()
+			game:GetService("TweenService"):Create(toggle, TweenInfo.new(0.4), {BackgroundColor3 = Color3.fromRGB(30,30,30)}):Play()
 		end
 		spawn(function()
 			pcall(function()
@@ -382,11 +382,11 @@ function lib:NewSlider(section, value, default, min, max, func)
 		BackgroundTransparency = 1.000,
 		Position = UDim2.new(0, 15, 0, 0),
 		Size = UDim2.new(0, 153, 0, 35),
-		Font = Enum.Font.SourceSans,
 		Text = "Slider",
 		TextColor3 = Color3.fromRGB(6, 255, 255),
 		TextSize = 14.000,
 		TextXAlignment = Enum.TextXAlignment.Left,
+		Font = Enum.Font.DenkOne,
 		Parent = Frame
 	});
 	local ValueDisplay = addInstance("TextLabel", {
@@ -395,12 +395,12 @@ function lib:NewSlider(section, value, default, min, max, func)
 		BackgroundTransparency = 1.000,
 		Position = UDim2.new(0, 219, 0, 0),
 		Size = UDim2.new(0, 48, 0, 35),
-		Font = Enum.Font.SourceSans,
 		Text = "50",
 		TextColor3 = Color3.fromRGB(6, 255, 255),
 		TextSize = 14.000,
 		TextWrapped = true,
 		TextXAlignment = Enum.TextXAlignment.Right,
+		Font = Enum.Font.DenkOne,
 		Parent = Frame
 	});
 	addInstance("UICorner", {
